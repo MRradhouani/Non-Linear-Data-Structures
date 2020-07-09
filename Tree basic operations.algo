@@ -1,0 +1,97 @@
+ALGORITHM binary_tree
+VAR
+    root  : INTEGER;
+    node :struct{
+        data:integer; 
+        left : ^node;
+        right: ^node; 
+      }
+
+
+
+
+
+BEGIN
+        FUNCTION number_nodes (node) : INTEGER
+        VAR
+
+        BEGIN
+        IF (root=Null) THEN
+            struct=0
+        ELSE
+          RETURN struct=1+(number_nodes(node.left)+number_nodes(node.right)) 
+        END_IF
+
+        END
+
+
+
+        FUNCTION height_tree(node) : INTEGER
+        VAR
+            maxtree :^node;
+            lDepth,rDepth : integer
+        BEGIN
+            IF (root=Null) THEN
+            RETURN 0
+            ELSE
+            {
+
+           
+                         lDepth = maxDepth(node.left); 
+                         rDepth = maxDepth(node.right);
+              if (lDepth > rDepth)  
+               RETURN (lDepth+1); 
+             else RETURN(rDepth+1); 
+            }
+        END
+
+
+
+        FUNCTION number_leaves (node) : return_type
+        VAR
+            set_declarations
+        BEGIN
+                        if(node == NULL)        
+                return 0; 
+            if(node.left == NULL && node.right==NULL)       
+                return 1;             
+            else 
+                return number_leaves(node.left) + number_leaves(node.right);       
+        END
+
+
+
+        FUNCTION maximum_value(node) : return_type
+        VAR
+            lres 
+            rres 
+        BEGIN
+             if (root == NULL) 
+             RETURN 0;
+
+             ELSE_IF (lres.maximum_value(node.left) > res) THEN
+              RETURN   res=lres;
+             ELSE_IF(rres.maximum_value(node.right) > res)
+               RETURN  res = rres; 
+             END_IF
+        END
+
+
+
+        FUNCTION  full_binary(node) : BOOLEAN
+        VAR
+            set_declarations
+        BEGIN
+            if (root == NULL) 
+        RETURN true; 
+
+        if (root.left == NULL && root.right == NULL) 
+        RETURN true; 
+
+        if ((root.left) && (root.right)) 
+        RETURN (full_binary(root.left) && full_binary(root.right)); 
+
+            RETURN false; 
+
+        END
+END
